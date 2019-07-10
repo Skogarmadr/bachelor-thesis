@@ -1,0 +1,24 @@
+[
+	{
+		"username": "alice",
+		"wallet": [{
+			"wif": "cPg4ssEMrxSELzpD6hK52y1tfPcYfJvU1R153HhP2yWoyUNihitK",
+			"pubKey": "0307560f56d2652c309b732394fa1c460fae7231f12adb2715329241028cca888a",
+			"pubKeyHash": "ea2da066b9fdadea872af0d4ac138b8c1d4181ae",
+			"p2pkh": "n2sB58biJzTCpbtzPgdDvCPCSYbt9oRuCs",
+			"p2sh-p2wpkh": "2MwfFe3fmjoe7AMEMTxcVZChMvKSJC9ocoB",
+			"p2wpkh": "tb1qagk6qe4elkk74pe27r22cyut3sw5rqdwyq5dk6"
+		}]
+	},
+	{
+		"username": "bob",
+		"wallet": [{
+			"wif": "cUpa4EZsjN4YL25ZfgqT9LR3jRzwPrD2Hc7E8HnPizX2A83PhMno",
+			"pubKey": "039d04be8039c20e3799af14a61c5cdc86d2103c4d45b80a7ac8f25b4834722475",
+			"pubKeyHash": "a007223750ccd2cead48848a731f062839b1cc7a",
+			"p2pkh": "mv76xQGhSj2CChqkAg9tcCuMNVDdqCRuhA",
+			"p2sh-p2wpkh": "2N7PRqTkPDgtj2XQL3tXMZVQtHwLTs1KfnP",
+			"p2wpkh": "tb1q5qrjyd6senfvat2gsj98x8cx9qumrnr6qdska7"
+		}]
+	}
+]
