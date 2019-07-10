@@ -24,7 +24,7 @@ This thesis is made available under the Creative Commons Public License, Attribu
 International. A copy of the full license is available in the [LICENSE](/LICENSE) file.
 
 ## PDF version
-A rendered PDF version of the thesis is automatically generated using [travis-ci](https://travis-ci.org/Skogarmadr/bachelor-thesis) and pushed back to this repository at [bachelor-pdf:LucaSrdjenovic-bachelorthesis.pdf](https://github.com/Skogarmadr/bachelor-thesis/blob/bachelor-pdf/LucaSrdjenovic-bachelorthesis.pdf).
+A rendered PDF version of the thesis is automatically generated using [travis-ci](https://travis-ci.org/Skogarmadr/bachelor-thesis) and pushed back to this repository at [bachelor-pdf:LucaSrdjenovic-bachelorthesis.pdf](https://github.com/Skogarmadr/bachelor-thesis/blob/master-pdf/LucaSrdjenovic-bachelorthesis.pdf).
 
 Generating the pdf locally requires pandoc (>=2.1.3), XeLaTeX, and Bibtex. Then, run:
 
