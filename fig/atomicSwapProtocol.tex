@@ -1,0 +1,73 @@
+\begin{figure}[!htbp]
+\centering
+\resizebox{.9\linewidth}{!}{%
+\begin{tikzpicture}[thick]                    
+  \begin{umlseqdiag}
+    \umlactor[scale=0.6,class=Sender,fill=white!0]{Alice}
+    \umlobject[no ddots,fill=white!0,x=5]{Bitcoin Blockchain}
+    \umlobject[no ddots,fill=white!0,x=9]{Ethereum Blockchain}
+    \umlactor[scale=0.6,class=Receiver,fill=white!0,x=14]{Bob}
+
+
+    \begin{umlfragment}[type={\shortstack[l]{1. Funding}},name=funding]
+        \begin{umlcall}[op={generate a secret and hash},draw=OliveGreen,fill=OliveGreen!20]{Alice}{Alice}
+        \end{umlcall}
+
+        \begin{umlcall}[op={Fund HTLC},draw=BrickRed,fill=BrickRed!20,fill=BrickRed!20,  return=FundingTx]{Alice}{Bitcoin Blockchain}
+        \end{umlcall}
+        \begin{umlcall}[op={Transfer the hash},draw=OliveGreen,fill=OliveGreen!20]{Alice}{Bob}
+                \begin{umlcall}[op={Transfer the transaction},draw=OliveGreen,fill=OliveGreen!20,dt=4]{Alice}{Bob}
+         \end{umlcall}
+         \end{umlcall}
+         \begin{umlcall}[op={Fund HTLC},draw=BrickRed,fill=BrickRed!20, return=fundingTx]{Bob}{Ethereum Blockchain}
+         \end{umlcall}
+          \begin{umlcall}[op={Transfer the transaction},draw=OliveGreen,fill=OliveGreen!20]{Bob}{Alice}
+         \end{umlcall}
+
+    \end{umlfragment}
+    
+    \begin{umlfragment}[type={\shortstack[l]{2. Claiming}},name=claiming,label=Alice Follow]
+      \begin{umlcall}[dt=8,op={Claim ETH Fund},draw=MidnightBlue,fill=MidnightBlue!20]{Alice}{Ethereum Blockchain}
+       \begin{umlcall}[dt=6,op={Get claimed tansaction},draw=BrickRed,fill=BrickRed!20]{Ethereum Blockchain}{Alice}
+      
+        \end{umlcall}
+        \begin{umlcall}[dt=18,op={Extract the secret},draw=MidnightBlue,fill=MidnightBlue!20, return= Return the secret]{Bob}{Ethereum Blockchain}
+        \end{umlcall}
+        \end{umlcall}
+      \begin{umlcall}[dt=6,op={Claim BTC Fund},draw=MidnightBlue,fill=MidnightBlue!20]{Bob}{Bitcoin Blockchain}
+       \begin{umlcall}[dt=6, op={Get claimed transaction},draw=BrickRed,fill=BrickRed!20]{Bitcoin Blockchain}{Bob}
+     \end{umlcall}
+     \end{umlcall}
+    \end{umlfragment}
+    
+    \begin{umlfragment}[type={\shortstack[l]{3. Refunding}},name=refunding,label=Alice Refuse]
+      \begin{umlcall}[dt=20, op={Timelock reached},draw=MidnightBlue,fill=MidnightBlue!20]{Ethereum Blockchain}{Ethereum Blockchain}
+         \begin{umlcall}[dt=15,op={Refund ETH Fund},draw=MidnightBlue,fill=MidnightBlue!20]{Bob}{Ethereum Blockchain}
+       \begin{umlcall}[dt=6, op={Get claimed transaction},draw=BrickRed,fill=BrickRed!20]{Ethereum Blockchain}{Bob}
+     \end{umlcall}
+     \end{umlcall}
+     \end{umlcall}
+       \begin{umlcall}[dt=30, op={Timelock reached},draw=MidnightBlue,fill=MidnightBlue!20]{Bitcoin Blockchain}{Bitcoin Blockchain}
+         \begin{umlcall}[dt=50,op={Refund BTC Fund},draw=MidnightBlue,fill=MidnightBlue!20]{Alice}{Bitcoin Blockchain}
+         \begin{umlcall}[dt=6, op={Get claimed transaction},draw=BrickRed,fill=BrickRed]{Bitcoin Blockchain}{Alice}
+     \end{umlcall}
+     \end{umlcall}
+     \end{umlcall}
+    \end{umlfragment}
+    \umlsdnode[dt=8]{Alice}
+    \umlsdnode[dt=13]{Bitcoin Blockchain}
+    \umlsdnode[dt=3]{Ethereum Blockchain}
+    \umlsdnode[dt=8]{Bob}
+    \umlnote[x=0,y=-20.5,width=6cm,fill=white]{refunding}{If Alice don't follow, the timelock of bob will be reached. Bob will get his fund back. After that Alice wait for her timelock and will get her fund back.}
+  \end{umlseqdiag}
+    \filldraw[draw=BrickRed,fill=BrickRed!20] (0,-22) circle (.2);
+  \node at (1.2,-22) {Transaction};
+  \filldraw[draw=MidnightBlue,fill=MidnightBlue!20] (3,-22) circle (.2);
+  \node at (3.6,-22) {Call};
+  \filldraw[draw=OliveGreen,fill=OliveGreen!20] (5,-22) circle (.2);
+  \node at (6,-22) {Off-chain};
+\end{tikzpicture}
+}
+\caption{Sequence of atomic swap protocol.}
+\label{fig:atomicSwapProtocol}
+\end{figure}
