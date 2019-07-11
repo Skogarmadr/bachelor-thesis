@@ -1,6 +1,6 @@
 # Bachelor Thesis
 [![License](https://img.shields.io/github/license/Skogarmadr/bachelor-thesis.svg)](https://github.com/Skogarmadr/bachelor-thesis/blob/master/LICENSE)
-[![Build Status](https://travis-ci.org/jacquesd/master-thesis.svg?branch=master)](https://travis-ci.org/jacquesd/bachelor-thesis)
+[![Build Status](https://travis-ci.org/jacquesd/master-thesis.svg?branch=master)](https://travis-ci.org/Skogarmadr/bachelor-thesis)
 [![PDF](https://img.shields.io/badge/PDF-latest-blue.svg?style=flat)](https://github.com/Skogarmadr/bachelor-thesis/blob/master-pdf/LucaSrdjenovic-bachelorthesis.pdf)
 
 This repository contains the report for the bachelor thesis:
@@ -8,11 +8,11 @@ This repository contains the report for the bachelor thesis:
 
 
 <p align="center" style="font-size:larger;">
-<i>Atomic Swap</i>
+<i>Bitcoin & Ethereum Cross-chain Atomic Swap</i>
 </p>
 <p align="center" style="font-size:large;">
-<i>Bitcoin & Ethereum Cross-chain<br />
-Atomic Swap</i>
+<i>An atomic swap between Bitcoin & Ethereum<br />
+using Hashed Timelock Contract</i>
 </p>
 
 written by Luca Srdjenovic, under the supervision of Prof. Ninoslav Marina (advisor)  and   Thomas Shababi (coadvisor), submitted to the Computer Science Engineering, Software and Multimedia developement
