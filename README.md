@@ -1,6 +1,6 @@
 # Bachelor Thesis
 [![License](https://img.shields.io/github/license/Skogarmadr/bachelor-thesis.svg)](https://github.com/Skogarmadr/bachelor-thesis/blob/master/LICENSE)
-[![Build Status](https://travis-ci.org/jacquesd/master-thesis.svg?branch=master)](https://travis-ci.org/Skogarmadr/bachelor-thesis)
+[![Build Status](https://travis-ci.org/Skogarmadr/bachelor-thesis.svg?branch=master)](https://travis-ci.org/Skogarmadr/bachelor-thesis)
 [![PDF](https://img.shields.io/badge/PDF-latest-blue.svg?style=flat)](https://github.com/Skogarmadr/bachelor-thesis/blob/master-pdf/LucaSrdjenovic-bachelorthesis.pdf)
 
 This repository contains the report for the bachelor thesis:
