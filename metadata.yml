@@ -1,8 +1,8 @@
 ---
-title: Atomic Swap
+title: Bitcoin & Ethereum Cross-chain Atomic Swap 
 subtitle: |
-  | Bitcoin & Ethereum Cross-chain 
-  | Atomic Swap
+  | A Trustless Method of Exchanging Bitcoin 
+  | For Ether Between Two Peers
 author: Luca Srdjenovic
 advisor:
   title: Prof.
@@ -11,6 +11,7 @@ advisor:
 coadvisor:
   title:
   name: Thomas Shababi
+  affiliation: TrueLevel SA, Switzerland
 date:
   year: 2019
   month: July
