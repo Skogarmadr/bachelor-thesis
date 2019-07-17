@@ -1,0 +1,33 @@
+\begin{figure}[!htbp]
+\centering
+\resizebox{\linewidth}{!}{%
+\begin{tikzpicture}[thick]
+  \begin{umlpackage}[x=3,fill=MidnightBlue!20]{HTLC}
+
+    \umlclass[fill=white]{HashedTimelockContract}{
+    - busyAddresses : mapping (address => bool) \\
+    }{
+    + ownerToContract : mapping (address => LockContract) \\
+    + lock(address payable receiver, bytes32 hashlock, uint block) \\
+    + unlock(address owner, bytes32 preimage) : bool \\
+    + refund(): bool\\
+    «event» NewLockContract(address indexed sender, address indexed receiver, \\ uint amount, bytes32 hashlock,uint timelock) \\
+    «event» FundClaimed(address indexed receiver, bytes32 preimage, uint amount) \\
+    «event» RefundSpent(address indexed owner, uint amount)
+    }
+    \umlclass[fill=white,x=9]{<<struct>> LockContract}{
+    sender: payable address \\
+    receiver: payable address \\
+    amount: uint \\
+    hashlock: byte32 \\
+    timelock: uint \\
+    }
+
+    \umlHVuniaggreg{HashedTimelockContract}{<<struct>> LockContract}
+  \end{umlpackage}
+\end{tikzpicture}
+}
+\caption[\acrshort{uml} class diagram of the Hashed Timelock Contract Reference Implementation]{\acrshort{uml} class diagram of the Hashed Timelock Contract Implementation.}
+\label{fig:erc777uml}
+\end{figure}
+ 

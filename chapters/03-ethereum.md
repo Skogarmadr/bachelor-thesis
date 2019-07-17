@@ -1,4 +1,3 @@
-# Ethereum
-Test \gls{web3} for testing.
+# Ethereum, A Decentralised Computing Platform
 
-Test \citep{buterin2013whitepaper}.
+## Test
