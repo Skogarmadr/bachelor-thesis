@@ -4,7 +4,7 @@ $else$
 # Bachelor Thesis
 $endif$
 [![License](https://img.shields.io/github/license/$username$/$repo.name$.svg)](https://github.com/$username$/$repo.name$/blob/master/LICENSE)
-[![Build Status](https://travis-ci.org/jacquesd/master-thesis.svg?branch=master)](https://travis-ci.org/jacquesd/bachelor-thesis)
+[![Build Status](https://travis-ci.org/Skogarmadr/bachelor-thesis.svg?branch=master)](https://travis-ci.org/Skogarmadr/bachelor-thesis)
 [![PDF](https://img.shields.io/badge/PDF-latest-blue.svg?style=flat)](https://github.com/$username$/$repo.name$/blob/master-pdf/$generated_file$.pdf)
 
 This repository contains the report for the bachelor thesis:
