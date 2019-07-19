@@ -11,8 +11,8 @@ This repository contains the report for the bachelor thesis:
 <i>Bitcoin & Ethereum Cross-chain Atomic Swap</i>
 </p>
 <p align="center" style="font-size:large;">
-<i>An atomic swap between Bitcoin & Ethereum<br />
-using Hashed Timelock Contract</i>
+<i>A Trustless Method of Exchanging Bitcoin<br />
+For Ether Between Two Peers</i>
 </p>
 
 written by Luca Srdjenovic, under the supervision of Prof. Ninoslav Marina (advisor)  and   Thomas Shababi (coadvisor), submitted to the Computer Science Engineering, Software and Multimedia developement
