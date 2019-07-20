@@ -7,48 +7,45 @@
     \umlobject[no ddots,fill=white!0,x=5]{Bitcoin Blockchain}
     \umlobject[no ddots,fill=white!0,x=9]{Ethereum Blockchain}
     \umlactor[scale=0.6,class=Receiver,fill=white!0,x=14]{Bob}
-
-
     \begin{umlfragment}[type={\shortstack[l]{1. Funding}},name=funding,label=Init]
-        \begin{umlcall}[op={generate a secret and hash},draw=OliveGreen,fill=OliveGreen!20]{Alice}{Alice}
-          \begin{umlcall}[op={Fund HTLC},draw=BrickRed, fill=OliveGreen!20,  return=FundingTx]{Alice}{Bitcoin Blockchain}
+
+        \begin{umlcall}[op={generate a secret},draw=OliveGreen,fill=OliveGreen!20]{Alice}{Alice}
+          \begin{umlcall}[op={hash(secret)},draw=OliveGreen,fill=OliveGreen!20]{Alice}{Alice}
+          \end{umlcall}
+          \begin{umlcall}[op={Fund HTLC},draw=BrickRed, fill=OliveGreen!20,  return=TX1]{Alice}{Bitcoin Blockchain}
           \end{umlcall}
           \begin{umlcall}[op={Transfer the hash},draw=OliveGreen,fill=OliveGreen!20]{Alice}{Bob}
             \begin{umlcall}[op={Watch the transaction and verify},draw=OliveGreen,fill=OliveGreen!20,dt=4]{Bob}{Bitcoin Blockchain}
              \end{umlcall}
              \end{umlcall}
-             \begin{umlcall}[op={Fund HTLC},draw=BrickRed,fill=OliveGreen!20, return=fundingTx]{Bob}{Ethereum Blockchain}
+             \begin{umlcall}[op={Fund HTLC},draw=BrickRed,fill=OliveGreen!20, return=TX2]{Bob}{Ethereum Blockchain}
               \begin{umlcall}[op={Watch the transaction and verify},draw=OliveGreen,fill=OliveGreen!20]{Alice}{Ethereum Blockchain}
               \end{umlcall}
              \end{umlcall}
-
         \end{umlcall}
     \end{umlfragment}
-    
     \begin{umlfragment}[type={\shortstack[l]{2. Claiming}},name=claiming,label=Success]
       \begin{umlcall}[dt=8,op={Claim ETH Fund},draw=MidnightBlue,fill=MidnightBlue!20]{Alice}{Ethereum Blockchain}
-       \begin{umlcall}[dt=6,op={Get claimed tansaction},draw=BrickRed,fill=BrickRed!20]{Ethereum Blockchain}{Alice}
-      
+       \begin{umlcall}[dt=6,op={Get TX3},draw=BrickRed,fill=BrickRed!20]{Ethereum Blockchain}{Alice}
         \end{umlcall}
         \begin{umlcall}[dt=18,op={Extract the secret},draw=MidnightBlue,fill=MidnightBlue!20, return= Return the secret]{Bob}{Ethereum Blockchain}
         \end{umlcall}
         \end{umlcall}
       \begin{umlcall}[dt=6,op={Claim BTC Fund},draw=MidnightBlue,fill=MidnightBlue!20]{Bob}{Bitcoin Blockchain}
-       \begin{umlcall}[dt=6, op={Get claimed transaction},draw=BrickRed,fill=BrickRed!20]{Bitcoin Blockchain}{Bob}
+       \begin{umlcall}[dt=6, op={Get TX4},draw=BrickRed,fill=BrickRed!20]{Bitcoin Blockchain}{Bob}
      \end{umlcall}
      \end{umlcall}
     \end{umlfragment}
-    
     \begin{umlfragment}[type={\shortstack[l]{3. Refunding}},name=refunding,label=Fail]
       \begin{umlcall}[dt=20, op={Timelock reached},draw=MidnightBlue,fill=MidnightBlue!20]{Ethereum Blockchain}{Ethereum Blockchain}
          \begin{umlcall}[dt=15,op={Spent Refund ETH},draw=MidnightBlue,fill=MidnightBlue!20]{Bob}{Ethereum Blockchain}
-       \begin{umlcall}[dt=6, op={Get refunding transaction},draw=BrickRed,fill=BrickRed!20]{Ethereum Blockchain}{Bob}
+       \begin{umlcall}[dt=6, op={Get TX5},draw=BrickRed,fill=BrickRed!20]{Ethereum Blockchain}{Bob}
      \end{umlcall}
      \end{umlcall}
      \end{umlcall}
        \begin{umlcall}[dt=30, op={Timelock reached},draw=MidnightBlue,fill=MidnightBlue!20]{Bitcoin Blockchain}{Bitcoin Blockchain}
          \begin{umlcall}[dt=50,op={Spent refund BTC},draw=MidnightBlue,fill=MidnightBlue!20]{Alice}{Bitcoin Blockchain}
-         \begin{umlcall}[dt=6, op={Get refunding transaction},draw=BrickRed,fill=BrickRed]{Bitcoin Blockchain}{Alice}
+         \begin{umlcall}[dt=6, op={Get TX6},draw=BrickRed,fill=BrickRed]{Bitcoin Blockchain}{Alice}
      \end{umlcall}
      \end{umlcall}
      \end{umlcall}

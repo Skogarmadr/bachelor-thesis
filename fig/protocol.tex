@@ -6,13 +6,14 @@
     \hline
     \multicolumn{1}{|c}{Alice (BTC$\rightarrow$ETH)} &  & \multicolumn{1}{c|}{Bob (ETH$\rightarrow$BTC)} \\
     & \textit{Initialization phase} & \\
-    $K_a \leftarrow k_aG$  & & $K_b \leftarrow k_bG$ \\
-    $h_a \leftarrow \mathcal{H}_\textit{160} (k_a)$ & & $h_b \leftarrow \mathcal{H}_\textit{160} (k_b)$ \\ 
+    $k_A \xleftarrow{R} [1, p-1]$ & & $k_B \xleftarrow{R} [1, p-1]$ \\
+    $Q_A \leftarrow k_AG$  & & $Q_B \leftarrow k_BG$ \\
+    $h_A \leftarrow \mathcal{H}_\textit{160} (Q_A)$ & & $h_B \leftarrow \mathcal{H}_\textit{160} (Q_B)$ \\ 
     $s \xleftarrow{R} \mathbb{Z}_{2^{256}}$ & & \\
     $h_s \leftarrow \mathcal{H}_\textit{256}(s)$ &&  \\ 
-    \multicolumn{3}{|c|}{$\xleftarrow{\langle \text{send } h_b \rangle}$} \\
+    \multicolumn{3}{|c|}{$\xleftarrow{\langle \text{send } h_B \rangle}$} \\
     & \textit{Lock phase} & \\
-    create $\text{BTX}_\textit{lock}$ $\langle h_a, h_b, h_s, t_0 \rangle$ & & \\
+    create $\text{BTX}_\textit{lock}$ $\langle h_A, h_B, h_s, t_0 \rangle$ & & \\
     sign $\text{BTX}_\textit{lock}$ & & \\
     broadcast $\text{BTX}_\textit{lock}^\textit{signed}$ & &  \\
     \multicolumn{3}{|c|}{$\xrightarrow{\langle \text{send } h_s,  \text{ watch BTX}_\textit{lock} \rangle} $}\\
@@ -31,7 +32,7 @@
     \hline
   \end{tabular}}
   \caption{Full protocol of cross-chain atomic swap between Bitcoin and Ethereum with Alice and Bob with initialization, lock, and swap phases.}
-  \label{tbl:standards}
+  \label{tbl:protocol}
 \end{table}
 
     
