@@ -65,7 +65,7 @@ The bitcoin transactions in this protocol use \gls{gls-segwit} for making broadc
 #### Pre-image
 Generation of a valid pre-image  $\alpha \in \mathbb{Z}_{2^{256}}$ of 32 bytes size to a given $h = \mathcal{H}_\textit{256}(\alpha)$ where $\mathcal{H}_\textit{256}$ is the `SHA256` algorithm.
 
-#### Public key Hashed 
+#### Public key hash   
 For a public key $Q$ to a given $h_Q = \mathcal{H}_\textit{160}(Q)$ where $\mathcal{H}_\textit{160}$ is the `SHA256` follow by the `RIPEMD-160` algorithm.
 $h_Q$ is the version of $Q$ that is given to other participant so that they can send it bitcoins. It's shorter than the original public key, and it may provide an extra layer of security for the bitcoins compared for giving the public key direct.
 
@@ -82,7 +82,7 @@ The signatures of both participants are required for creating HTLC only accessib
 
 ### Ethereum
 
-Ethereum doesn't use the same Model as Bitcoin (UTXO) but is based on `Account Model`. Every cryptocurrencies that with this style model can fulfilled there requirements for having the same for having the same compatibility with this protocol. In comparison to Bitcoin, Ethereum use smart contract that handles also timelock and hashlock. However, we doesn't need the `Public key hashed` for the verification. We use instead, the `msg.sender` from Smart contract that allows verification.
+Ethereum doesn't use the same Model as Bitcoin (UTXO) but is based on `Account Model`. Every cryptocurrencies that with this style model can fulfilled there requirements for having the same for having the same compatibility with this protocol. In comparison to Bitcoin, Ethereum use smart contract that handles also timelock and hashlock. However, we doesn't need the `Public key hash` for the verification. We use instead, the `msg.sender` from Smart contract that allows verification.
 
 ### Elliptic Curve
 
@@ -127,7 +127,7 @@ We use two timelocks t0 and t1 that are defined during lock swap. t0 sets the ti
  1. swap execution [success]. 
  2. refund execution [fail]. 
    
-The script is defined with Bob's $h_B$ public key hashed, Alice's $h_A$ public key hashed and the preimage $h_s$  in the Listing \ref{lst:p2sh}:
+The script is defined with Bob's $h_B$ public key hash, Alice's $h_A$ public key hash and the preimage $h_s$  in the Listing \ref{lst:p2sh}:
 
 \begin{minipage}{\linewidth}\centering
 \begin{lstlisting}[mathescape=true, caption={Swaplock script.},label=lst:p2sh]
@@ -145,7 +145,7 @@ OP_CHECKSIG
 
 #### Claim Fund
 
-Bob takes control of bitcoin in using the pre-image $s$ and his public key hashed $h_B$ from Alice to redeem the `Swaplock P2SH`. Bob can redeem it with:
+Bob takes control of bitcoin in using the pre-image $s$ and his public key hash $h_B$ from Alice to redeem the `Swaplock P2SH`. Bob can redeem it with:
 \begin{minipage}{\linewidth}\centering
 \begin{lstlisting}[mathescape=true, caption={Bob's script signature},label=lst:claim]
    <$sig_B$> <$h_B$> <$s$> OP_TRUE
@@ -154,7 +154,7 @@ Bob takes control of bitcoin in using the pre-image $s$ and his public key hashe
 
 #### Spend Refund
 
-With this contract Alice can spend this output wit her public key hashed $h_A$ after the timelock $t_0$ with the script signature :
+With this contract Alice can spend this output wit her public key hash $h_A$ after the timelock $t_0$ with the script signature :
 \begin{minipage}{\linewidth}\centering
 \begin{lstlisting}[mathescape=true, caption={Alice's script signature},label=lst:refund]
    <$sig_A$> <$h_A$> OP_FALSE
@@ -163,7 +163,9 @@ With this contract Alice can spend this output wit her public key hashed $h_A$ a
 
 ### Ethereum Smart Contract
 
-Ethereum doesn't use script language Bitcoin but the programming language for the smart contract. The smart contract allows to create functions :
+Ethereum doesn't use script language Bitcoin but the programming language for the smart contract. The smart contract allows to create functions from the uml diagram in figure \ref{fig:htlcuml} :
+
+\input{fig/htlc-diagram}
 
 #### Function lock()
 Function that will create a contract with all the prerequisites and lock it with the address of the sender `Bob` and the address of the receiver `Alice`.

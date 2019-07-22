@@ -1,36 +1,42 @@
-
-    \begin{table}[H!]
-        \centering
-      {\renewcommand{\arraystretch}{1.1}%
-      \begin{tabular}{ | l c l | }
-        \hline
-          \multicolumn{1}{|c}{Alice (BTC$\rightarrow$ETH)} &  & \multicolumn{1}{c|}{Bob (ETH$\rightarrow$BTC)} \\
-          & \textit{Initialization phase} & \\
-          $K_a \leftarrow k_aG$  & & $K_b \leftarrow k_bG$ \\
-          $h_a \leftarrow \mathcal{H}_\textit{160} (k_a)$ & & $h_b \leftarrow \mathcal{H}_\textit{160} (k_b)$ \\ 
-          $s \xleftarrow{R} \mathbb{Z}_{2^{256}}$ & & \\
-          $h_s \leftarrow \mathcal{H}_\textit{256}(s)$ &&  \\ 
-          \multicolumn{3}{|c|}{$\xleftarrow{\langle \text{send } h_b  \rangle}$} \\
-          & \textit{Lock phase} & \\
-          create $\text{BTX}_\textit{lock}$ $\langle h_s \rangle$ & & \\
-          sign $\text{BTX}_\textit{lock}$ & & \\
-          broadcast $\text{BTX}_\textit{lock}^\textit{signed}$ & &  \\
-          \multicolumn{3}{|c|}{$\xrightarrow{\langle \text{send } h_s,  \text{ watch BTX}_\textit{lock} \rangle} $}\\
-          & & verify $\text{BTX}_\textit{lock}^\textit{signed}$ \\
-          & & create $\text{ETX}_\textit{lock}$ $\langle h_s \rangle$ \\
-          & & sign $\text{ETX}_\textit{lock}$ \\
-          & & broadcast $\text{ETX}_\textit{lock}^\textit{signed}$  \\
-          \multicolumn{3}{|c|}{$\xleftarrow{(\text{$\text{watch ETX}_\textit{lock}$) }}$} \\
-          verify $\text{ETX}_\textit{lock}$ & & \\
-          & \textit{Swap phase} &  \\ 
-          unlock $\text{ETX}_\textit{lock}$ $\langle s \rangle$ & & \\
-          broadcast $\text{ETX}_\textit{unlock}$  & & \\
-          \multicolumn{3}{|c|}{$\xrightarrow{\text{watch ETX}_\textit{unlock}, \text{ extract } s}$} \\
-          & & spent $\text{BTX}_\textit{lock}$ $\langle s \rangle$ \\
-          & & broadcast $\text{BTX}_\textit{unlock}$ \\
-        \hline
-      \end{tabular}
-    \end{table}}
-  \caption{Full protocol of cross-chain atomic swap between Bitcoin and Ethereum between with Alice and Bob with initialization, lock, and swap phases.}
-  \label{fig:protocol}
-\end{figure}
+\begin{figure}[!htbp]
+  \centering
+  \resizebox{\linewidth}{!}{%
+  \begin{tikzpicture}[thick]
+    \begin{umlpackage}[x=3,fill=MidnightBlue!20]{HTLC}
+      \umlclass[fill=solarizedbeige]{HashedTimelockContract}{
+      - busyAddresses : mapping (address => bool)) \\
+      }{
+      + ownerToContract : mapping (address => LockContract)) \\
+      + lock(address payable \_receiver, bytes32 \_hashlock, uint \_block) \\
+      + unlock(address \_owner, bytes32 \_preimage) : bool \\
+      + refund() : bool \\
+      <<event>> NewLockContract(
+          address indexed sender, \\
+          \qquad address indexed receiver, \\
+          \qquad duint amount, \\ 
+         \qquad bytes32 hashlock,\\
+         \qquad uint timelock : bool)\\
+      <<event>> FundClaimed(
+          address indexed receiver,
+          bytes32 preimage,
+          uint amount
+      ) \\
+       <<event>> RefundSpent(address indexed owner, uint amount)
+          
+      }
+      \umlclass[fill=solarizedbeige,y=-6, type=struct]{LockContract}{
+          address : payable sender \\
+          address : payable receiver \\
+          uint : amount \\
+          bytes32 : hashlock \\
+          uint : timelock \\
+      }
+  
+      \umlHVuniaggreg{LockContract}{HashedTimelockContract}
+    \end{umlpackage}
+  
+  \end{tikzpicture}
+  }
+  \caption[\acrshort{uml} class diagram of the Smart Contract Ethereum Reference Implementation]{\acrshort{uml} class diagram of the \texttt{Smart Contract} reference Implementation in Ethereum.}
+  \label{fig:htlcuml}
+  \end{figure}

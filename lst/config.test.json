@@ -1,0 +1,12 @@
+{
+    "alice": {
+        "entropy": "d399c2cbabdc9fa8790ec5111bb05da6",
+        "phrase": "squeeze sock real fish size stage tomorrow suffer baby talk blast erupt",
+        "seed": "4973ee8e81e0047a633f3b0d3cec61ec3b028846ffb648f509d55be97e72a2e502e35148b463770cea5394bb7fe53a72344f7b5ffe08f3b208c27adb33f95d92",
+        "prvWIF": "cPmUdWJYPESULvX3s2tFBfwJ5FWiWHm2wcx8pmiPiK6a2yKsrrb6",
+        "xprv": "tprv8ZgxMBicQKsPd4RZif2NZzSMcFYdtEbCL8nSovoBYzTobGy9Pyjx6kK1BhZjYGRyvoMgyshBSNBrAkaaax6fGF7YAoq2i74ZEdjR2NfVKcQ",
+        "xpub": "tpubD6NzVbkrYhZ4WXTMcJgxyQ6UBH4a3Zn6uSPE6SqUyGGCRmDv2NZYHEvsMqqNbbzKJYh2Lacgh37J2EMbDrmxtBSZfP5hbQBRMmDfshtPH3G"
+    },
+    "use_testnet": true,
+    "APINETWORK" : "BTCTEST/"
+}
