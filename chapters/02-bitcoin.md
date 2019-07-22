@@ -1,1 +1,1 @@
-# Bitcoin, a peer-to-peer network
+# Bitcoin, A Peer-to-Peer Network
