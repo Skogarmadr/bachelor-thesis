@@ -42,8 +42,6 @@ A hashlock is a type of encumbrance that restricts the spending of an output unt
 
 ### Absolute Timelock
 
-In addition to hashlock, it also uses timelock. Hashed Timelock Contracts use two different types of timelocks during an Atomic Swap. The second important element of HTLC is a timelock. CheckLockTimeVerify (CLTV) uses a time base to lock and release bitcoins. This means that time constraints are hard coded and coins are released only at a specific time and date or a specific height of block size.
-
 \begin{minipage}{\linewidth}\centering
 \begin{lstlisting}[caption={[Example of locking script with CheckSequenceVerify]Example of locking script with CheckLockTimeVerify.},label=lst:cltv]
 IF

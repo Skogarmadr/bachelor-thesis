@@ -127,10 +127,10 @@ We use two timelocks t0 and t1 that are defined during lock swap. t0 sets the ti
  1. swap execution [success]. 
  2. refund execution [fail]. 
    
-The script is defined with Bob's $h_B$ public key hash, Alice's $h_A$ public key hash and the preimage $h_s$  in the Listing \ref{lst:p2sh}:
+The script is defined with Bob's $h_B$ public key hash, Alice's $h_A$ public key hash and the preimage $h_s$  in the Listing \ref{lst:scriptprotocol}:
 
 \begin{minipage}{\linewidth}\centering
-\begin{lstlisting}[mathescape=true, caption={Swaplock script.},label=lst:p2sh]
+\begin{lstlisting}[mathescape=true, caption={Swaplock script.},label=lst:scriptprotocol]
 OP_IF
     OP_SHA256 <$h_s$> OP_EQUALVERIFY OP_DUP 
     OP_HASH160 <$h_B$>  
@@ -143,9 +143,11 @@ OP_CHECKSIG
 \end{lstlisting}
 \end{minipage}
 
+The Swaplock is executed when OP_IF reads a true value from the stack. It expects a secret value, an \gls{ecdsa} signature and the \gls{pkh}. It hashes the secret and checks that it matches a given hash, then it checks PKH followed by the signature against the given public key. 
+
 #### Claim Fund
 
-Bob takes control of bitcoin in using the pre-image $s$ and his public key hash $h_B$ from Alice to redeem the `Swaplock P2SH`. Bob can redeem it with:
+Bob takes control of bitcoin in using the pre-image $s$ and his public key hash $h_B$ from Alice to redeem the `Swaplock P2SH`. To redeem the HTLC this way, Bob use the following script in the input of a transaction::
 \begin{minipage}{\linewidth}\centering
 \begin{lstlisting}[mathescape=true, caption={Bob's script signature},label=lst:claim]
    <$sig_B$> <$h_B$> <$s$> OP_TRUE
@@ -154,7 +156,7 @@ Bob takes control of bitcoin in using the pre-image $s$ and his public key hash 
 
 #### Spend Refund
 
-With this contract Alice can spend this output wit her public key hash $h_A$ after the timelock $t_0$ with the script signature :
+With this contract Alice can spend this output with her public key hash $h_A$ after the timelock $t_0$ with the script signature :
 \begin{minipage}{\linewidth}\centering
 \begin{lstlisting}[mathescape=true, caption={Alice's script signature},label=lst:refund]
    <$sig_A$> <$h_A$> OP_FALSE
