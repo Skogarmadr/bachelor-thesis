@@ -1,6 +1,6 @@
 # Ethereum, A Decentralized Computing Platform
 
-Launched in 2015, Ethereum is a decentralized software platform that enables to the developer to build their own  Smart Contracts and distributed Applications (Dapp) and allows to avoid any downtime, fraud, control or interference from a third party. The basis of Ethereum was to made a platform system using Turing-complete programming language running in the blockchain instead of using the script language from Bitcoin.  Developers can create distributed applications and publish them into the blockchain that run on the \gls{evm}. Ethereum work on the system of using accounts and balances in a manner called state transitions and doesn't use the \gls{gls-utxo} from Bitcoin. Ethereum is a programmable blockchain.
+Launched in 2015, Ethereum is a decentralized software platform that enables to the developer to build their own  Smart Contracts and \gls{dapp} and allows to avoid any downtime, fraud, control or interference from a third party. The basis of Ethereum was to made a platform system using Turing-complete programming language running in the blockchain instead of using the script language from Bitcoin.  Developers can create distributed applications and publish them into the blockchain that run on the \gls{evm}. Ethereum work on the system of using accounts and balances in a manner called state transitions and doesn't use the \gls{gls-utxo} from Bitcoin. Ethereum is a programmable blockchain.
 
 
 ## Ether
@@ -61,7 +61,7 @@ Solidity provides a way to define new types in the form of structs. A struct in 
 In Solidity, a mapping are represented as such hash tables which consists of having  a key type  and a value type pairs.The following listing \ref{struct} define how a mapping look like :
 
 \begin{minipage}{\linewidth}\centering
-\lstinputlisting[caption={[Example of a mapping] Creation of a mapping, which accepts first the key type an address, and the value type will be uint, the mapping is referenced as Balance for the name.}, label=lst:mapping,language=solidity]{lst/mapping.sol}
+\lstinputlisting[caption={[Example of a mapping] Creation of a mapping, which accepts first the key type an address, and the value type will be uint, the mapping is referenced as `balances` for the name.}, label=lst:mapping,language=solidity]{lst/mapping.sol}
 \end{minipage}
 
 ### Modifier
@@ -90,4 +90,4 @@ EVM opcode which stops the execution of the transaction. The advantage of this f
 
 ### Event
 
-Events are dispatched signals that the smart contracts can execute. \gls{dapp} connected to Ethereum JSON-RPC API, can listen to these events and receipt them taking data inside. The advantage of the events is they scan be indexed, so that means  the event history is searchable later.
+Events are dispatched signals that the smart contracts can execute. \gls{dapp} connected to Ethereum JSON-RPC API, can listen to these events and receipt them taking data inside. The advantage of the events is they can be indexed, so that means the event history is searchable later.
