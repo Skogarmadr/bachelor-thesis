@@ -1,15 +1,15 @@
 
 # Protocol
 
-We describe a protocol for an on-chain atomic swap between Bitcoin and Ethereum, but the protocol can be generalized for Ethereum and any other cryptocurrencies that fulfill the same requirements as Bitcoin ( e.g. LiteCoin), see the chapter \ref{prerequisites}. This protocol is heavily based on the `BIP-199` (\gls{bip}) \citep{bip199} for the Bitcoin part. For Ethereum the concept is roughly the same but with less prerequisites than Bitcoin.  For sending funds, each participant must generate a specific address to lock fund on each chain (cross-chain) where each other party can take control of the funds from the other chain (swap) only.
+We describe an analyze of the problematic and the implementation for  cross-chain atomic swap protocol between Bitcoin and Ethereum. The the protocol can be generalized for Bitcoin and any other cryptocurrencies that fulfill the same requirements as Bitcoin (e.g. LiteCoin), see the chapter \ref{prerequisites}. This protocol is heavily based on the `BIP-199` (\gls{bip}) from \citep{bip199} for the Bitcoin part. For Ethereum the concept is roughly the same but with less prerequisites than Bitcoin.  For sending funds, each participant must generate a specific address called HTLC on each blockchain, lock funds onto these addresses where the other parties can take control from the other blockchain.
 
 ## Limitations
 
 The most important process of the protocol is the `liveness`. Liveness means that participant must be online for respecting the protocol (at least one participant is still online). In the worst scenario where someone doesn't follow the protocol, it can happen the coalition end up and loose the funds. This happen only if a party is not remained online during the swap or it has not claimed the funds in time.
 
-In an other side, there is an other factor to take on board which is the `Fees`. Each blockchain have different fees because there are built with different internal parameters and transaction complexity. It is also due to a factor, the blockspace that depend of the demand. In this project, we use the Bitcoin Blockchain like a tool, more precisely, we use some advanced features that increase the cost of the transaction for bitcoin side. In general, the transaction is more expensive on Bitcoin than Ethereum, because Ethereum the cost transactions doesn't depend by the user.
+In an other side, there is an other factor to take on board which is the `Fees`. Each blockchain have different fees because there are built with different internal parameters and transaction complexity. It is also due to a factor, the block space that depend of the demand. In this project, we use the Bitcoin Blockchain like a tool, more precisely, we use some advanced features that increase the cost of the transaction for bitcoin side as `P2SH`. In general, the transaction is more expensive on Bitcoin than Ethereum, because  the transaction cost in Ethereum doesn't depend by the user but by the operation in the contract.
 
-The difficult problem with cross chain swaps is the off chain coordination required to have the two parties meet and agree on conditions. This consist to an accord between the two peers by the speed of the protocol (i.g. to considerate that a confirmation is confirmed) but the speed is influenced with the  slowness and a number of confirmation required for validating a confirmation in each blockchain side. The protocol is slow but it can be extended by way of setups. The only things we can change from the setups is the ranges of fees that can consume but in any case we cannot deviate the worst scenario that consists to have an amount of fee in each chain.
+The difficult problem with cross chain swaps is the off chain coordination. In few words, it's to make an agreement between the two parties on specific conditions. This agreement can depends by the speed of the protocol (i.g. to considerate that a confirmation is confirmed) but the speed is influenced with the  slowness and a number of confirmation required for validating a confirmation in each blockchain side. The protocol is slow but it can be extended by way of setups. The only things we can change from the setups is the ranges of fees that can be consumed in a transaction.
 
 ## Scenario
 
@@ -29,7 +29,7 @@ Let's see the process in the figure \ref{fig:atomicswap} :
 8. When Alice signs Bob’s contract address with the value, she unlocks the address and reveals the value to Bob as well.
 9. Bob, now knowing the value, signs off the transaction TX4 for Alice’s address and retrieves his BTC.
 
-To summarize the process , the scenario describes the participants and their incentives. `Alice` the sender owns Bitcoin (BTC) and Bob the receiver owns ether (ETH), they want to swap funds. Alice and Bob have already negotiated the price in advance and are agreed (i.e. amount of bitcoin for amount of ether to swap). They are only two possible ways of execution path for both parties :
+To summarize the process , the scenario describes the participants and their incentives. `Alice` the sender owns Bitcoin (BTC) and Bob the receiver owns ether (ETH), they want to swap funds. Alice and Bob have already negotiated the price in advance and found an agreement (i.e. an amount of bitcoin for an amount of ether to swap). They are only two possible ways of execution path for both parties :
 
 * `The protocol succeed` - Alice get her ETH and Bob his BTC.
 * `The protocol failed` - both parties keep their fund (they will lost some amounts because they need to pay some fees for each transaction).
@@ -143,7 +143,7 @@ OP_CHECKSIG
 \end{lstlisting}
 \end{minipage}
 
-The Swaplock is executed when `OP_IF` reads a `TRUE` value from the stack. It expects a secret value, an \gls{ecdsa} signature and the \gls{pkh}. It hashes the secret and checks that it matches a given hash, then it checks PKH followed by the signature against the given public key. When the value `FALSE` from the stack is read, it executes the `OP_ELSE` 
+The Swaplock is executed when `OP_IF` reads a `TRUE` value from the stack. It expects a secret value, an \gls{ecdsa} signature and the \gls{pkh}. It hashes the secret and checks that it matches a given hash, then it checks PKH followed by the signature against the given public key. When the value `FALSE` from the stack is read, it executes the `OP_ELSE` branch.
 
 #### Claim Fund
 

@@ -1,14 +1,13 @@
 # Implementation in Bitcoin with bitcoinjs-lib
 
-For this project, we  describe a very simple method of constructing and executing smart contracts that sacrifice some privacy and potentially some security. The implementation is spread into five main components (i) a `generation of a wallet`, (ii) `how estimate the fees in Bitcoin`, (iii) `implementation of the funding transaction`, (iv) `implementation of the claiming transaction`, and (v) `implementation of the refunding transaction`. Note that the current
-implementation is not ready for the production. This implementation is a more a educational work than an implementation for production and needs to be
-reviewed and tested more deeply before being used in production.
+For this project, we  describe a very simple method of constructing and executing bitcoin smart contracts that sacrifice some privacy and potentially some security. The implementation is spread into five main components (i) a `generation of a wallet`, (ii) `how estimate the fees in Bitcoin`, (iii) `implementation of the funding transaction`, (iv) `implementation of the claiming transaction`, and (v) `implementation of the refunding transaction`. Note that the current
+implementation is not ready for the production. This implementation is more a educational work than an implementation for production and needs to be reviewed and tested more deeply before being used in production.
 
-This chapter refers to the implementation available on GitLab at \url{https://gitlab.com/Skogarmadr/atomic-swap/tree/master} of the writing of the this report. Note that the sources may change or evolve from the last version of the code. So, the last version is updated in the GitLab. 
+This chapter refers to the implementation available on GitLab at \url{https://gitlab.com/Skogarmadr/atomic-swap/tree/master} of the writing of this report. Note that the sources may change or evolve from the last version of the code. So, the last version is updated in the GitLab. 
 
 ## Configuration
 
-The project employs NodeJS with modern Javascript, for the simplicity of use and the installation of dependance modules. The library used  is  `bitcoinjs-lib` to manage all parts of Bitcoin. The incentive of this library are, (i) compatible with Typescript, (ii) still active, (iii) has a large number of contributors and releases and (iv) has a folder full of clear examples.
+The project employs NodeJS with modern Typescript, for the simplicity of use and the installation of dependance modules. The library used  is  `bitcoinjs-lib` to manage all parts of Bitcoin. The incentive of this library are, (i) compatible with Typescript, (ii) still active, (iii) has a large number of contributors and releases and (iv) has a folder full of clear examples.The project employs NodeJS with modern Javascript, for the simplicity of use and the installation of dependance modules. The library used  is  `bitcoinjs-lib` to manage all parts of Bitcoin. The incentive of this library are, (i) compatible with Typescript, (ii) still active, (iii) has a large number of contributors and releases and (iv) has a folder full of clear examples.
 
 There is `config.json` file that contents all the data needed for the environnement works (i.e. Alice and Bob entropy for getting back the key pair). It is important to note that in production must saved only in client side because it is private data. Note also that the project work with the `Tesnet Network` because he is still in development and not testing for the production.
 
