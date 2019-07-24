@@ -1,6 +1,6 @@
 # Ethereum, A Decentralized Computing Platform
 
-Launched in 2015, Ethereum is a decentralized software platform that enables to the developer to build their own  Smart Contracts and \gls{dapp} and allows to avoid any downtime, fraud, control or interference from a third party. The basis of Ethereum was to made a platform system using Turing-complete programming language running in the blockchain instead of using the script language from Bitcoin.  Developers can create distributed applications and publish them into the blockchain that run on the \gls{evm}. Ethereum work on the system of using accounts and balances in a manner called state transitions and doesn't use the \gls{gls-utxo} from Bitcoin. Ethereum is a programmable blockchain.
+Launched in 2015, Ethereum is a decentralized software platform that enables to the developer to build their own  Smart Contracts and \gls{dapp} and allows to avoid any downtime, fraud, control or interference from a third party. The basis of Ethereum was to made a platform system using Turing-complete programming language running in the blockchain instead of using the script language from Bitcoin.  Developers can create distributed applications and publish them into the blockchain that run on the \gls{evm}. Ethereum work on the system of using accounts and balances in a manner called state transitions and doesn't use the \gls{utxo} from Bitcoin. We can define Ethereum as a programmable blockchain.
 
 
 ## Ether
@@ -12,7 +12,7 @@ Gas is a unit that measures the amount of computational effort, more precisely G
 
 `Gas Limit` are the limit because there is an maximum amount of gaz that we agree to spend for a transaction.   This is here for avoiding e.g. if there is an error in the code and produce to overpay accidentally to much amount without our will.
 
-`Gas Price`, is the amount that will increase or decrease the speed of the confirmation of the transaction by the miners in the blockchain. On spending less fees on a transaction, this won't be interesting for the miners, thus your transaction should take more time to be mined. In the opposite, higher the amount of fees , more the transaction will be mined quickly because more attractive for them.
+`Gas Price`, is the amount that will increase or decrease the speed of the confirmation of the transaction by the miners in the blockchain. On spending less fees on a transaction, this won't be interesting for the miners, thus your transaction should take more time to be mined. In the opposite, higher is the amount of fees , more the transaction will be mined quickly because it is more attractive for them.
 
 
 ## Account

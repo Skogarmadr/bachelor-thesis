@@ -16,6 +16,7 @@ In Bitcoin, Payment Channel is class of techniques designed to allow users to ma
 
 Atomic swap is not a payment channel but uses tools of it like \gls{htlc}, a technique that can allow payments to be securely routed across multiple payment channels that we describe below (see chapter \ref{security-by-hashed-timelock-contracts}).  It is a concept from the Bitcoin community that is used in the Lightning Network.
 
+
 \footnotetext{Micropayment channel: \href{https://bitcoin.org/en/contracts-guide\#micropayment-channel}{Bitcoin.org Developer Guide}}
 
 ## Security by Hashed Timelock Contracts

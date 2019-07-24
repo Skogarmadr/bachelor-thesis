@@ -97,7 +97,7 @@ For having a valid refunding transaction, the timelock must be reached. To start
 
 ## Broadcast a transaction into the network  
 
-Once a transaction is build, we can get her in `Hexadecimal form` (only way to push a transaction). But this transaction for the moment is only known by us,we need to share it into the network for the miners confirm it and include it into a block. With the  block explorer `chain.so`, its REST API offer us a POST request to push a transaction in the Testnet. See listing \ref{broadcast}.
+Once a transaction is build, we can get her in `Hexadecimal form` (only way to push a transaction). But this transaction for the moment is only known by us,we need to share it into the network for the miners confirm it and include it into a block. With the  block explorer `chain.so`, its REST API offer us a POST request to push a transaction in the Testnet. See listing \ref{lst:broadcast}.
 
 \begin{minipage}{\linewidth}\centering
 \lstinputlisting[caption={[Function to broadcast a raw transaction] Function to broadcast a raw transaction.}, label=lst:broadcast,language=javascript]{lst/broadcast.ts}

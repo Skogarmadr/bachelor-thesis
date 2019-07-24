@@ -1,7 +1,7 @@
 
 # Protocol
 
-We describe a protocol for an on-chain atomic swap between Bitcoin and Ethereum, but the protocol can be generalized for Ethereum and any other cryptocurrencies that fulfill the same requirements as Bitcoin ( e.g. LiteCoin), see \ref{bitcoinPrerequisites}. This protocol is heavily based on the `BIP-199` (\gls{bip}) \citep{bip199} for the Bitcoin part. For Ethereum the concept is roughly the same but with less prerequisites than Bitcoin.  For sending funds, each participant must generate a specific address to lock fund on each chain (cross-chain) where each other party can take control of the funds from the other chain (swap) only.
+We describe a protocol for an on-chain atomic swap between Bitcoin and Ethereum, but the protocol can be generalized for Ethereum and any other cryptocurrencies that fulfill the same requirements as Bitcoin ( e.g. LiteCoin), see the chapter \ref{prerequisites}. This protocol is heavily based on the `BIP-199` (\gls{bip}) \citep{bip199} for the Bitcoin part. For Ethereum the concept is roughly the same but with less prerequisites than Bitcoin.  For sending funds, each participant must generate a specific address to lock fund on each chain (cross-chain) where each other party can take control of the funds from the other chain (swap) only.
 
 ## Limitations
 
@@ -60,7 +60,7 @@ In the chapter \ref{scenario}, we describe the conditional process that must be 
 
 ### Bitcoin
 
-The bitcoin transactions in this protocol use \gls{gls-segwit} for making broadcast. For any other cryptocurrencies with a bitcoin style UTXO model (e.g. Litecoin), these requirements must be fulfilled for having the same compatibility with this protocol (i.e. Bitcoin Cash is not compatible.)
+The bitcoin transactions in this protocol use \gls{gls-segwit} structure that allows to reduce the fees. For any other cryptocurrencies with a bitcoin style UTXO model as such e.g. Litecoin, these requirements must be fulfilled for having the same compatibility with this protocol. E.g. Bitcoin Cash isn't compatible.
 
 #### Pre-image
 Generation of a valid pre-image  $\alpha \in \mathbb{Z}_{2^{256}}$ of 32 bytes size to a given $h = \mathcal{H}_\textit{256}(\alpha)$ where $\mathcal{H}_\textit{256}$ is the `SHA256` algorithm.
@@ -95,13 +95,13 @@ Bitcoin and Ethereum do use the same elliptic curves. They use the `secp256k1` c
     a&: \text{an element of } \mathbb{F}_p;\ a = 0 \\
     b&: \text{an element of } \mathbb{F}_p;\ b = 7 \\
     E&: \text{an elliptic curve equation};\ y^2 = x^3 + bx + a \\
-    G&: \text{a base point};\ G' = \\ (&\texttt{\scriptsize0x79BE667EF9DCBBAC55A06295CE870B07029BFCDB2DCE28D959F2815B16F81798},\\ &\texttt{\scriptsize0x483ADA7726A3C4655DA4FBFC0E1108A8FD17B448A68554199C47D08FFB10D4B8}) \\
+    G&: \text{a base point};\ G = \\ (&\texttt{\scriptsize0x79BE667EF9DCBBAC55A06295CE870B07029BFCDB2DCE28D959F2815B16F81798},\\ &\texttt{\scriptsize0x483ADA7726A3C4655DA4FBFC0E1108A8FD17B448A68554199C47D08FFB10D4B8}) \\
 \end{split}
 \end{equation}
 
 ## Hashed Timelock Contract
 
-The overall protocol is as follow : Alice moves her bitcoin into an address where each participant controls a type of transaction using Bitcoin scripting language. Bob do the same into a Ethereum Smart contract that is then used to reveal the secret depending of Alice who claims the ether. Bitcoin and Ethereum transactions  are designed in such a way that if a participant follows the protocol he can’t terminate with a loss. If the deal goes through, Alice spends the ether by revealing the secret, thus allowing Bob to spend the locked bitcoin. If the deal is aborted, Bob spends the ether after the second timelock,thus allowing Alice to spend the bitcoin after the first timelock. In both cases, the participants must add transactions fees.
+The description of the protocol is as follow : Alice moves her bitcoin into an `P2WSH` address where each participant controls a type of transaction using Bitcoin scripting language. Bob does the same into a Ethereum `Smart contract` address that is then used to reveal the secret depending of Alice who claims the ether. Bitcoin and Ethereum transactions  are designed in such a way that if a participant follows the protocol, there is no way for losing his coin. If the deal goes through, Alice spends the ether by revealing the secret, thus allowing Bob to spend the locked bitcoin. If the deal is aborted, Bob spends the ether after the second timelock,thus allowing Alice to spend the bitcoin after the first timelock. In both cases, the participants must add transactions fees.
 The full protocol is described in Table \ref{tbl:protocol}.
 
 \input{fig/protocol}
@@ -117,7 +117,7 @@ The full protocol is described in Table \ref{tbl:protocol}.
 \end{split}
 \end{equation}
 
-We use two timelocks t0 and t1 that are defined during lock swap. t0 sets the time window during which it is safe to execute the trade. When t0 is passed, the refund may start. t1 sets the response time during which Alice is required to react and reveal  her preimage to get her ether. After t1, Bob can get his ether back and allow Alice to redeem her bitcoin.
+We use two timelocks t0 and t1 that are defined during lock swap. t0 sets the time for Alice where it is safe to execute the exchange. When t0 is passed, the refund may start. t1 sets the response time during which Alice is required for claiming the coin from Bob and reveal her preimage . When t1 is passed, Bob can get his ether back and allows Alice to redeem her bitcoin. Note that all timelocks are defined in Relative Timelock, see \ref{relative-timelock}.
 
 ### Bitcoin Script
 
@@ -134,7 +134,7 @@ The script is defined with Bob's $h_B$ public key hash, Alice's $h_A$ public key
 OP_IF
     OP_SHA256 <$h_s$> OP_EQUALVERIFY OP_DUP 
     OP_HASH160 <$h_B$>  
-OP_ESLE
+OP_ELSE
     <$t_0$> OP_CHECKSEQUENCEVERIFY OP_DROP OP_DUP
     OP_HASH160 <$h_A$>
 OP_ENDIF
@@ -143,11 +143,12 @@ OP_CHECKSIG
 \end{lstlisting}
 \end{minipage}
 
-The Swaplock is executed when OP_IF reads a true value from the stack. It expects a secret value, an \gls{ecdsa} signature and the \gls{pkh}. It hashes the secret and checks that it matches a given hash, then it checks PKH followed by the signature against the given public key. 
+The Swaplock is executed when `OP_IF` reads a `TRUE` value from the stack. It expects a secret value, an \gls{ecdsa} signature and the \gls{pkh}. It hashes the secret and checks that it matches a given hash, then it checks PKH followed by the signature against the given public key. When the value `FALSE` from the stack is read, it executes the `OP_ELSE` 
 
 #### Claim Fund
 
-Bob takes control of bitcoin in using the pre-image $s$ and his public key hash $h_B$ from Alice to redeem the `Swaplock P2SH`. To redeem the HTLC this way, Bob use the following script in the input of a transaction::
+Bob takes control of bitcoin in using the pre-image $s$ and his public key hash $h_B$ from Alice to redeem the `Swaplock P2SH`. To redeem the HTLC from this way, Bob uses the following script in the input of a transaction:
+
 \begin{minipage}{\linewidth}\centering
 \begin{lstlisting}[mathescape=true, caption={Bob's script signature},label=lst:claim]
    <$sig_B$> <$h_B$> <$s$> OP_TRUE
@@ -157,11 +158,14 @@ Bob takes control of bitcoin in using the pre-image $s$ and his public key hash 
 #### Spend Refund
 
 With this contract Alice can spend this output with her public key hash $h_A$ after the timelock $t_0$ with the script signature :
+
 \begin{minipage}{\linewidth}\centering
 \begin{lstlisting}[mathescape=true, caption={Alice's script signature},label=lst:refund]
    <$sig_A$> <$h_A$> OP_FALSE
 \end{lstlisting}
 \end{minipage}
+
+\newpage
 
 ### Ethereum Smart Contract
 
@@ -200,4 +204,4 @@ The refund transaction is a transaction that allows the sender to abort the swap
 $\text{BTX}_\textit{refund}$, bitcoin transaction with 1 inputs consuming `Swaplock P2SH` ( $\text{BTX}_\textit{lock}$ ) and 1 output vout to Alice.
 $\text{ETX}_\textit{refund}$, ethereum transaction from `Smart Contract` that call the function `refund` to send back the funds to Bob. 
 
-\input{fig/transactions}
+\input{fig/list_transactions}
