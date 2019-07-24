@@ -1,7 +1,7 @@
 # Introduction
 
 ## Motivation
-Firstly, the main problem when two parties want to exchange some goods is the problem of
+The main problem when two parties want to exchange some goods is the problem of
 trust. For dealing with an exchange that works, we need a certain level of trust must apply particularly when the transaction depends on no one. To illustrate this, we cannot simply assure that a party A will get a good after paying some money to a party B and vice versa. A trusted third party or escrow may resolve this problem to arbitrate a transaction without no
 one try to swindle the other. But in compensation for this, an extra cost may be added to
 the transaction and there is still no guarantee that the escrow is a trusted source. Secondly, most of the crypto-based exchanges are still fully centralized even though the main goal of
