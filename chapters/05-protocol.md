@@ -70,10 +70,10 @@ For a public key $Q$ to a given $h_Q = \mathcal{H}_\textit{160}(Q)$ where $\math
 $h_Q$ is the version of $Q$ that is given to other participant so that they can send it bitcoins. It's shorter than the original public key, and it may provide an extra layer of security for the bitcoins compared for giving the public key direct.
 
 #### Hashlock
-Hashlock is for revealing the secret to the other participant. It is a primitive that includes a value to reveal some data (pre-image) that is associated to given hash and handle the spent the HTLC.
+Hashlock is for revealing the secret to the other participant. It is a primitive that includes a value to reveal some data (pre-image) that is associated to given hash where $h_s = \mathcal{H}_\textit{256}(s)$ and handle the spent of the HTLC.
 
 #### Timelock
-The timelock is to enable a execution paths that is predefined by an amount of time. This amount of time is expressed in a number of block `nLocktime` where $t = \textit{nLocktime}$. We use number of block instead of the amount of time in second for avoiding a problem called `leap second`.
+The timelock is to enable a execution paths that is predefined by an amount of time. This amount of time is expressed in a number of block `nSequence` where $t = \textit{nSequence}$. We use number of block instead of the amount of time in second for avoiding a problem called `leap second`.
 
 #### Multi signatures
 
@@ -165,7 +165,6 @@ With this contract Alice can spend this output with her public key hash $h_A$ af
 \end{lstlisting}
 \end{minipage}
 
-\newpage
 
 ### Ethereum Smart Contract
 
