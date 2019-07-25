@@ -66,7 +66,7 @@ The bitcoin transactions in this protocol use \gls{gls-segwit} structure that al
 Generation of a valid pre-image  $\alpha \in \mathbb{Z}_{2^{256}}$ of 32 bytes size to a given $h = \mathcal{H}_\textit{256}(\alpha)$ where $\mathcal{H}_\textit{256}$ is the `SHA256` algorithm.
 
 #### Public key hash   
-For a public key $Q$ to a given $h_Q = \mathcal{H}_\textit{160}(Q)$ where $\mathcal{H}_\textit{160}$ is the `SHA256` follow by the `RIPEMD-160` algorithm.
+For a public key $Q$ to a given $h_Q = \mathcal{H}_\textit{160}(Q)$ where $\mathcal{H}_\textit{160}$ is the `SHA256` followed by the `RIPEMD-160` algorithm.
 $h_Q$ is the version of $Q$ that is given to another participant so that they can send it bitcoins. It's shorter than the original public key, and it may provide an extra layer of security for the bitcoins compared to giving the public key directly.
 
 #### Hashlock
