@@ -18,20 +18,26 @@ The contract when is fully tested in local can be deployed on a Testnet network 
 \lstinputlisting[caption={[Implementation of the function lock] Implementation of the function lock.}, label=lst:lock,language=solidity]{lst/lock.sol}
 \end{minipage}
 
+The listing \ref{lst:lock} describes how is implemented the function for locking `lock` funds into the smart contract.
+First we need parameters for validate data. We uses the type `bytes32` for the hashlock instead of using a string. This is because bytes take less bytes than the variable string at the compilation. Thus that allows to save fees. For being allowed to execute this function, we need to verify if the sender is not busy which means that he hasn't already a contract swap in progress. He need to send funds otherwise the function revert. And the receiver cannot be the the sender, therefore we need to verify the addresses. When all theses restrictions are verified, we can create a new `LockContract` and the address of the sender to true saying he can't call this function unless his swap is claim or refund.
+
 ## Unlock function
 
 
 \begin{minipage}{\linewidth}\centering
-\lstinputlisting[caption={[Implementation of the function unlock] Implementation of the function unlock.}, label=lst:lunlockock,language=solidity]{lst/unlock.sol}
+\lstinputlisting[caption={[Implementation of the function unlock] Implementation of the function unlock.}, label=lst:unlock,language=solidity]{lst/unlock.sol}
 \end{minipage}
 
+The listing \ref{lst:unlock} describes how is implemented the function `lock`  for unlocking the smart contract and claim the funds. Only the the receiver of the contract can call this function for the security of the program. We need to check if the contract exists before. Then we check if the function can be claimable. For that we check the value is equal to the hashlock and the timelock is not reached. When all these conditions are fulfilled, the funds are transferred to the receiver of the LockContract. And we free the owner of the contract. A new swap can start again.
 
 ## Refund function
-
 
 \begin{minipage}{\linewidth}\centering
 \lstinputlisting[caption={[Implementation of the function refund] Implementation of the function refund.}, label=lst:refund,language=solidity]{lst/refund.sol}
 \end{minipage}
+
+The listing \ref{lst:refund} describes how is implemented the function `refund` for spending the funds of the smart contract and get the funds back. Only the the owner of the contract can call this function for the security reason. We need to check if the contract exists before. Then we check if the function can be refundable. For that we check if the timelock is reached. When all these conditions are fulfilled, the funds are transferred to the receiver of the LockContract. And we free the owner of the contract. A new swap can start again.
+
 
 
 ## Interact with the contract

@@ -18,14 +18,16 @@ A transaction in bitcoin is the process to transfer coins between Bitcoin wallet
 
 \input{fig/transaction}
 
-The figure \ref{fig:transaction} above shows the main part of a Bitcoin transaction. Each transaction must possess one input and one output. Each input spends a payment in satoshi\footnotemark for a previous output. Each output then waits as an \gls{gls-utxo} until an input spends it. A simple example, when our Bitcoin wallet tells us that we have a 10 bitcoins in our balance, that means in reality that we have 10 bitcoins waiting in one or more \gls{utxo}.
+The figure \ref{fig:transaction} above shows the main part of a Bitcoin transaction. Each transaction must possess one input and one output. Each input spends a payment in satoshi\footnotemark for a previous output. Each output then waits as an \gls{utxo} until an input spends it. A simple example, when our Bitcoin wallet tells us that we have a 10 bitcoins in our balance, that means in reality that we have 10 bitcoins waiting in one or more \gls{utxo}.
 
 \footnotetext{Smallest unit in Bitcoin where $1 \texttt{ satoshi} = 10^{-8} \texttt{ bitcoin}$}
 
 To summarize, a transaction is composed of a set of inputs and outputs. Input is based on a `UTXO` at the address from the one who sends it.  Output refers to an address where the funds are sent. 
 
 ## Bitcoin Script
-As we see in chapter \ref{transaction}, a transaction has one input and one output. Input refers to a transaction identifier called `txid` and an output index number called `vout` for identifying a specifical output to be spent. The output also has an amount in satoshi which it sends it. A script is a list of instructions included in the transaction to explain how a person wants to spend the amount of satoshi. In a typical Bitcoin transaction, a person who satisfies the conditions of the script can gain access to it. The spender must provide a public key that then hashed can provide the target destination address. He also must give a signature to prove ownership of the private key corresponding to the public key just provided. The two next figures below are an example of how bitcoin script resembles with its system of the stack:
+As we have seen in chapter \ref{transaction}, a transaction has one input and one output. Input refers to a transaction identifier called `txid` and an output index number called `vout` for identifying a specific output to be spent. The output also has an amount in satoshi which it sends it. 
+
+A script is a list of instructions included in the transaction to explain how a person wants to spend the amount of satoshi. In a typical Bitcoin transaction, a person who satisfies the conditions of the script can gain access to it. The spender must provide a public key that then hashed can provide the target destination address. He also must give a signature to prove ownership of the private key corresponding to the public key just provided. The two next figures below are an example of how bitcoin script resembles with its system of the stack:
 
 \input{fig/script1}
 

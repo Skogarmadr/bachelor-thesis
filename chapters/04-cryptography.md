@@ -1,12 +1,12 @@
 # Cryptography
 
-In this chapter, we explain all the security-based only in the two cryptocurrencies used for the atomic-swap, Bitcoin and Ethereum. What type of function they use explained in a general way instead of going in the details. We will see also create Bitcoin and Ethereum addresses to understand their incentives.
+In this chapter, we explain all the security-based only in the two cryptocurrencies used for the atomic-swap, Bitcoin and Ethereum. We explain what type of function they use in a general way instead of going into the details. We will see also how to create Bitcoin and Ethereum addresses to understand their incentives that they provide.
 
-Bitcoin, Ethereum and many other cryptocurrencies are based on cryptography. Cryptography is a branch of mathematics used mainly in computer security. It provides digital currencies for the use of digital keys, addresses, and digital signatures. Most people think that a wallet contains the cryptocurrencies. This information is false, a wallet is a database containing the digitals keys only. The keys allow ownership attestation and the cryptographic-proof security model.
+Bitcoin, Ethereum and many other cryptocurrencies are based on cryptography. Cryptography is a branch of mathematics used mainly in computer security. It allows to digital currencies the use of digital keys, addresses, and digital signatures. Most people think that a wallet contains the cryptocurrencies. This information is false, a wallet is a database containing the digitals keys only. The keys allow ownership attestation and the cryptographic-proof security model.
 
-Digitals signatures are used to spends the funds from transactions. Most of the cryptocurrency transactions need a valid digital signature to be added into the blockchain. The digital signature can be generated only by the way of a secret called the private key. Anyone who has a copy of this private key can control the coins.
+`Digitals signatures` are used to spends the funds from transactions. Most of the cryptocurrency transactions need a valid digital signature to be added into the blockchain. The digital signature can be generated only by the way of a secret called the private key. Anyone who has a copy of this private key can control the coins.
 
-We talk also about digital fingerprints called more commonly addresses corresponding to the public key of the recipient. An address can be represented in real life like a bank account where the private key is the code to access the account. This address is generated from and target to a public key and the public key is generated from the private key. Addresses are defined as the destination of the transaction, more precisely the recipient of the funds.
+We talk also about digital `fingerprints` called more commonly addresses corresponding to the public key of the recipient. An address can be represented in real life like a bank account where the private key is the code to access the account. This address is generated from and target to a public key and the public key is generated from the private key. Addresses are defined as the destination of the transaction, more precisely the recipient of the funds.
 
 The main cryptographic functions used by Bitcoin and Ethereum are \gls{ecc} and cryptographic hash function all described below :
 
@@ -16,7 +16,7 @@ Elliptic curve cryptography is a function that implements an approach of public-
 
 #### Cryptographic Hash Function :
 
-A cryptographic hash function is a `one-way` hash function that takes input data of any size and returns an output of a fixed size. The input to a hash function is called a `pre-image` or `message`. The output from the hash function is called the `hash value` or `digest`. The hash function is used to produce a `fingerprint`. Bitcoin and Ethereum don't use the same hash functions. Bitcoin uses SHA-2 known by `SHA-256` and Ethereum SHA-3 also known by `Keccak-256`.
+A cryptographic hash function is a `one-way` hash function that takes an input data of any size and returns an output of a fixed size. The input to a hash function is called a `pre-image` or `message`. The output from the hash function is called the `hash value` or `digest`. The hash function is used to produce a `fingerprint`. Bitcoin and Ethereum don't use the same hash functions. Bitcoin uses `SHA-2` known by `SHA256` and Ethereum `SHA-3` also known by `Keccak-256`.
 
 ## Private and Public Key
 
@@ -29,7 +29,7 @@ These functions have the advantages that it is easy to do in one direction but i
 
 ## Generation of a Bitcoin address
 
-A bitcoin address looks like `1J7mdg5rbQyUHENYdx39WVWK7fsLpEoXZy`. It is a string of digits and characters that are shared for anyone who wants to send money. An address is the recipient funds. It is derivated from the public key using the cryptographic hash function that produces a fingerprint or "hash". Starting with the public key $K$ derivated from private key $k$, we compute the hash function $\mathcal{H}_\textit{160}$, which consists of a SHA256 hash and then compute the RIPEMD160 hash of the result, producing a 160-bit (20-byte) number. This algorithm is also called `Double Hashed` or `HASH160`. Then Bitcoin address is encoded as `Base58Check`. Base58Check is used for better human readability and for avoiding ambiguity. It protects against errors in address transcription and entry. The process is illustrated in the equation below :
+A bitcoin address looks like `1J7mdg5rbQyUHENYdx39WVWK7fsLpEoXZy`. It is a string of digits and characters that are shared for anyone who wants to send money. An address is the recipient funds. It is derivated from the public key using the cryptographic hash function that produces a fingerprint or "hash". Starting with the public key $K$ derivated from private key $k$, we compute the hash function $\mathcal{H}_\textit{160}(K)$, which consists of a `SHA256` hash and then compute the `RIPEMD160` hash of the result, producing a 160-bit (20-byte) number. This algorithm is also called `Double Hashed` or `HASH160`. Then Bitcoin address is encoded as `Base58Check`. `Base58Check` is used for better human readability and for avoiding ambiguity. It protects against errors in address transcription and entry. The process is illustrated in the equation below :
 
 \begin{equation}
 \begin{split}
@@ -42,12 +42,12 @@ A bitcoin address looks like `1J7mdg5rbQyUHENYdx39WVWK7fsLpEoXZy`. It is a strin
 
 ## Generation of an Ethereum address
 
-An ethereum address looks like `0x95FCA54fDA1bA3c2aF5BA54F3ec250B8Fe3Ae697`. Generate an Ethereum address is simpler than generating a Bitcoin address we have described above. Starting with the public key $K$ derivated from private key $k$, instead of computing the algorithm HASH160 and then make a Base58Check, we compute only the algorithm  Keccak-256 to calculate the hash of the public key. Then we take only the last 20 bytes (least significant bytes)making our Ethereum address: The process is illustrated in the equation below :
+An ethereum address looks like `0x95FCA54fDA1bA3c2aF5BA54F3ec250B8Fe3Ae697`. Generate an Ethereum address is simpler than generate a Bitcoin address that we have described above. Instead of computing the algorithm `HASH160` and then make a `Base58Check`, we compute only the algorithm `Keccak-256` to calculate the hash of the public key. Starting with the public key $K$ derivated from private key $k$, we compute the the hash function $Keccak(K)$ Then we take only the last 20 bytes (least significant bytes)making our Ethereum address: The process is illustrated in the equation below :
 \begin{equation}
 \begin{split}
     k& : \text{the private key} ; \text{ where } k \in [1, 2^{256}] \\
     K& : \text{the public key} ; \text{ where } K = k \cdot G \\
-    h& : \text{the hash value} ; \text{ where } h = Keccak256(h) \\
+    h& : \text{the hash value} ; \text{ where } h = Keccak256(K) \\
     A& : \text{the Address} ; \text{ where } A \text{ is the last 20 bytes } \in h \\
 \end{split}
 \end{equation}

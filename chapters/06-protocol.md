@@ -1,7 +1,7 @@
 
 # Protocol
 
-We describe an analysis of the problematic and the implementation of the cross-chain atomic swap protocol between Bitcoin and Ethereum. The protocol can be generalized for Bitcoin and any other cryptocurrencies that fulfill the same requirements as Bitcoin (e.g. LiteCoin), see the chapter \ref{prerequisites}. This protocol is heavily based on the `BIP-199` (\gls{bip}) from \citep{bip199} for the Bitcoin part. For Ethereum the concept is roughly the same but with fewer prerequisites than Bitcoin.  For sending funds, each participant must generate a specific address called HTLC on each blockchain, lock funds onto these addresses where the other parties can take control from the other blockchain.
+We describe an analysis of the problematic and the implementation of the cross-chain atomic swap protocol between Bitcoin and Ethereum. The protocol can be generalized for Bitcoin and any other cryptocurrencies that fulfill the same requirements as Bitcoin (e.g. LiteCoin), see the chapter \ref{prerequisites}. This protocol is heavily based on the `BIP-199` (\gls{bip}) from \citep{bip199} for the Bitcoin part. For Ethereum the concept is roughly the same but with fewer prerequisites than Bitcoin.  For sending funds, each participant must generate a specific address called HTLC on each blockchain, lock funds onto these addresses where the other party can take control from the other blockchain.
 
 ## Limitations
 
