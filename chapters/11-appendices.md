@@ -12,7 +12,7 @@
 [https://gitlab.com/Skogarmadr/atomic-swap/wikis/Cahier-des-charges](https://gitlab.com/Skogarmadr/atomic-swap/wikis/Cahier-des-charges)
 
 ## Planning of the project
-[https://gitlab.com/Skogarmadr/atomic-swap/wikis/Planning-et-t%C3%A2ches](https://gitlab.com/Skogarmadr/atomic-swap/wikis/Planning-et-t%C3%A2ches)
+[https://gitlab.com/Skogarmadr/atomic-swap/wikis/Planning-et-t%C3%A2ches](https://gitlab.com/Skogarmadr/atomic-swap/wikis/Planning-et-t%C3%A2ches   )
 
 ## Logbook of the project
 [https://gitlab.com/Skogarmadr/atomic-swap/wikis/Journal-de-bord](https://gitlab.com/Skogarmadr/atomic-swap/wikis/Journal-de-bord)
