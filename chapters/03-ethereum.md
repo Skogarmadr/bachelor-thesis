@@ -52,7 +52,7 @@ We use the features like `Modifier` or `Mapping` of the languages for implementi
 
 ### Structs
 
-Solidity provides a way to define new types in the form of structs. A struct in solidity is just a custom type. A struct is defined with a name and associated properties inside as variables. Implementation of a struct is shown in the following listing \ref{struct}:
+Solidity provides a way to define new types in the form of structs. A struct in solidity is just a custom type. A struct is defined with a name and associated properties inside as variables. Implementation of a struct is shown in the following listing \ref{lst:struct}:
 
 \begin{minipage}{\linewidth}\centering
 \lstinputlisting[caption={[Example of a struct type] Example of a struct type Voter which has several variables inside.}, label=lst:struct,language=solidity]{lst/struct.sol}
@@ -60,7 +60,7 @@ Solidity provides a way to define new types in the form of structs. A struct in 
 
 
 ### Mapping
-In Solidity, a mapping is represented as such hash tables which consist of having a key type and a value type pairs. The following listing \ref{struct} define how a mapping looks like :
+In Solidity, a mapping is represented as such hash tables which consist of having a key type and a value type pairs. The following listing \ref{lst:mapping} define how a mapping looks like :
 
 \begin{minipage}{\linewidth}\centering
 \lstinputlisting[caption={[Example of a mapping] Creation of a mapping, which accepts first the key type as an address, and the value type will be uint, the mapping is referenced as `balances` for the name.}, label=lst:mapping,language=solidity]{lst/mapping.sol}

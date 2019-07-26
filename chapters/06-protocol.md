@@ -183,7 +183,7 @@ Function when it is called, check if the timelock $t_1$ is reached and then tran
 
 ### Transactions
 
-All the transactions are described in figure \ref{fig:transactions}.
+All the transactions are described in figure \ref{fig:list_transactions}.
 
 #### Funding transaction
 
