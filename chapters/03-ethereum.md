@@ -7,7 +7,7 @@ Launched in 2015, Ethereum is a decentralized software platform that authorizes 
 
 The currency refereed for making operation and transactions in Ethereum is the `ether`, which is the fundamental token of the blockchain. The smallest unit in Ethereum is the `wei` where $1 \texttt{ wei} = 10^{-18} \texttt{ ethers}$ but it exists a multiple of units. The utility of wei comes from the representation of the data for the users who use it for paying the gas in transactions and smart contracts. 
 
-## Gaz and Fees
+## Gas and Fees
 
 
 Gas is a unit that measures the amount of computational effort, more precisely Gaz is used to calculate the number of fees that need to be paid into the network to execute an operation. Ethereum Gas is the mechanism of the Ethereum system, we cannot avoid that. A simple transaction or even smart contract that creates operations in the Blockchain cost Gas. The fees allow preventing any fissures in the system e.g. in introducing infinite loop into the code. The amount of fee to pay is defined by $GasLimit \cdot GasPrice$. The main goal of the fees is for rewarding the miners who mine transactions and then put them into blocks for securing the blockchain.

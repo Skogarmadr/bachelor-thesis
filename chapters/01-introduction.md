@@ -40,7 +40,7 @@ the type of accounts, the transactions, the \gls{evm}, smart contract, and the S
 
 Chapter \ref{cryptography} introduces the security about cryptocurrencies in general as such the private and public key, the definition of hash and \ref{ecc} function and the steps to generate an address in Bitcoin and Ethereum. These aspects are important to know how digital signature and fingerprint are defined.
 
-Chapter \ref{atomic-swap-a-method-of-exchanging-different-cryptocurrencies} defined what is atomic sway by explaining its features such as atomicity, the difference with payment channels, and the security by \gls{htlc}.
+Chapter \ref{atomic-swap-a-method-of-exchanging-different-cryptocurrencies} defined what is atomic swap by explaining its features such as atomicity, the difference with payment channels, and the security by \gls{htlc}.
 
 Chapter \ref{protocol} covers all the analyze of the atomic swap protocol in detail, such as the limitation, the scenario, the prerequisites, and all the parameters of the hashed timelock contracts.
 
@@ -53,3 +53,4 @@ Chapter \ref{results} covers the work that has been made and analyzes the advant
 Finally, in chapter \ref{discussion} we conclude the work of this thesis by synthesizing all the work made and what is the perspective  in the future to improve the work and solve
 some of its current issues.
 
+this
