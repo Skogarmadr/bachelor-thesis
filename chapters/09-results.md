@@ -19,7 +19,7 @@ When we want to add the other cryptocurrency to our program, the new cryptocurre
 * Both the cryptos must be capable of initiating hashed timelock contracts
 * Both must implement a type of smart contract.
 
-These characteristics are going to greatly limit the number of cryptos that can actually take part in these swaps. However, that's not meet that it is impossible to make an atomic swap with a cryptocurrency that doesn't use these prerequisites. We must find another protocol than ours. An example below :
+These characteristics are going to greatly limit the number of cryptos that can actually take part in these swaps. However, that doesn't mean that it is impossible to make an atomic swap with a cryptocurrency that doesn't use these prerequisites. We must find another protocol than ours. An example below :
 
 \begin{tabular}{|l|c|r|}
   \hline
@@ -34,7 +34,7 @@ These characteristics are going to greatly limit the number of cryptos that can 
 \end{tabular}
 
 
-We can see that Bitcoin and Ethereum are easy to swap because they have the same requirements. However, Monero doesn't. But it possible to swap Monero for Bitcoin, it is more difficult because we have to implement a protocol without locktime and hashlock. A project of Monero and Bitcoin atomic swap already exists and works, see  `Bitcoin & monero cross-chain atomic swap` from \citep{monero}.
+We can see that Bitcoin and Ethereum are easy to swap because they have the same requirements. However, Monero doesn't. But it possible to swap Monero for Bitcoin, it is more difficult because we have to implement a protocol without locktime and hashlock. A project of Monero and Bitcoin atomic swap already exists, see  `Bitcoin & monero cross-chain atomic swap` from \citep{monero}.
 
 ### Speed
 
@@ -44,7 +44,7 @@ An atomic swap is quicker than an exchange platform, but they still remain slow.
 
 Integrate Segregated Witness in Bitcoin was not in our objective of this thesis. But as mentioned above, atomic swaps are pretty slow because they need to be synchronized with both different blockchain transactions.  This is why we make an extra effort to add these features to the Bitcoin side for resolving a problem of transaction malleability. In bitcoin, we needed to create P2SH, but instead, we create a P2WSH. To compare the difference, see the part below :
 
-For a transaction with 1 input and 2 output and a fee rate of 8 sat/vB, we calculate the fees for SegWit & non-SegWit transactions :
+For a transaction with 1 input and 2 outputs and a fee rate of 8 sat/vB, we calculate the fees for SegWit & non-SegWit transaction :
 
 \begin{tabular}{|l|c|r|}
   \hline
@@ -54,7 +54,7 @@ For a transaction with 1 input and 2 output and a fee rate of 8 sat/vB, we calcu
   \hline
 \end{tabular}
 
-In the table above, we can see that a transaction using Non-SegWit will cost 1833 satoshis and SegWit transaction will cost 1338. SegWit allows saving 36 % of fees in less. This is really big, and it is why we must not avoiding  to use this transaction's structure. For more information, how to get the fee rate, see [https://fees.truelevel.io/#/btc](https://fees.truelevel.io/#/btc).
+In the table above, we can see that a transaction using Non-SegWit will cost 1833 satoshis and SegWit transaction will cost 1338. SegWit allows saving 36 % of fees in less in this type of transactions. This is really big, and it is why we must not avoiding  to use this transaction's structure. For more information, how to get the fee rate, see [https://fees.truelevel.io/#/btc](https://fees.truelevel.io/#/btc).
 
 
 ## Problem of dependance
