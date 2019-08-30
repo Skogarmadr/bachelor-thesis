@@ -48,7 +48,7 @@ An ethereum address looks like `0x95FCA54fDA1bA3c2aF5BA54F3ec250B8Fe3Ae697`. Gen
     k& : \text{the private key} ; \text{ where } k \in [1, 2^{256}] \\
     K& : \text{the public key} ; \text{ where } K = k \cdot G \\
     h& : \text{the hash value} ; \text{ where } h = Keccak256(K) \\
-    A& : \text{the Address} ; \text{ where } A \text{ is the last 20 bytes } \in h \\
+    A& : \text{the address} ; \text{ where } A \text{ is the last 20 bytes } \in h \\
 \end{split}
 \end{equation}
 

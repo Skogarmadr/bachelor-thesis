@@ -46,7 +46,7 @@ A Timelock is a type of smart contract primitive that restricts the spending of 
 
 #### Absolute Timelock
 
-The locktime will be set in an absolute way. It can be interpreted as two ways. First way, it is defined by block height or by the time, which will be` Unix Epoch timestamp`. If it is interpreted as a block height, it will be recorded as at block e.g. number 455488. If it is interpreted as the time, it will be set as 1564003242 secondes which means e.g. 07/24/2019 @ 9:20pm (UTC). Relative timelock is represented by  an absolute UTXO-level timelock and has been was added to Bitcoin by the \gls{bip} 65. CLTV include a `nLocktime` and is implemented in the Bitcoin’s script as `OP_CHECKLOCKTIMEVERIFY` (see the listing \ref{lst:cltv}).
+The locktime will be set in an absolute way. It can be interpreted as two ways. First way, it is defined by block height or by the time, which will be `Unix Epoch timestamp`. If it is interpreted as a block height, it will be recorded as at block e.g. number 455488. If it is interpreted as the time, it will be set as 1564003242 secondes which means e.g. 07/24/2019 @ 9:20pm (UTC). Relative timelock is represented by  an absolute UTXO-level timelock and has been was added to Bitcoin by the \gls{bip} 65. CLTV include a `nLocktime` and is implemented in the Bitcoin’s script as `OP_CHECKLOCKTIMEVERIFY` (see the listing \ref{lst:cltv}).
 
 \begin{minipage}{\linewidth}\centering
 \begin{lstlisting}[caption={[Example of locking script with CheckSequenceVerify]Example of locking script with CheckLockTimeVerify.},label=lst:cltv]

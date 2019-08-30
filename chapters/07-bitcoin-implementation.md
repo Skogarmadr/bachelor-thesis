@@ -7,7 +7,7 @@ This chapter refers to the implementation available on GitLab at \url{https://gi
 
 ## Configuration
 
-The project employs NodeJS with modern Typescript, for the simplicity of use and the installation of dependance modules. The library used is `bitcoinjs-lib` to manage all parts of Bitcoin. The incentive of this library is, (i) compatible with Typescript, (ii) still active, (iii) has a large number of contributors and releases and (iv) has a folder full of clear examples. The project employs NodeJS with modern Javascript, for the simplicity of use and the installation of dependance modules. The library used is `bitcoinjs-lib` to manage all parts of Bitcoin. The incentive of this library is, (i) compatible with Typescript, (ii) still active, (iii) has a large number of contributors and releases and (iv) has a folder full of clear examples.
+The project employs NodeJS with modern Typescript, for the simplicity of use and the installation of dependance modules. The library used is `bitcoinjs-lib` to manage all parts of Bitcoin. The incentive of this library is, (i) compatible with Typescript, (ii) still active, (iii) has a large number of contributors and releases and (iv) has a folder full of clear examples. 
 
 There is `config.json` file that contents all the data needed for the environment works (i.e. Alice and Bob entropy for getting back the key pair). It is essential to note this config file in production must be saved only on the client-side because it is private data. Note also that the project works with the `Tesnet Network` because he is still in development and not testing for the mainnet Network.
 

@@ -9,11 +9,11 @@ The most important process of the protocol is `liveness`. Liveness means that pa
 
 Secondly, there is another factor to take on board which is the `Fees`. Each blockchain has different fees because there are built with different internal parameters and transaction complexity. It is also due to a factor, the block space that depends on the demand. In this project, we use the Bitcoin Blockchain as a tool, more precisely, we use some advanced features that increase the cost of the transaction for bitcoin side as `P2SH`. In general, the transaction is more expensive on Bitcoin than Ethereum, because the transaction cost in Ethereum doesn't depend on the user but by the operation in the contract.
 
-The difficult problem with cross-chain swaps is off-chain coordination. In a few words, it's to find an agreement between the two parties on specific conditions. This agreement can depend on the speed of the protocol (i.g. to considerate that confirmation is confirmed) but the speed is influenced by the slowness and several confirmations required for validating a confirmation in each blockchain side. The protocol is slow but it can be extended by way of setups. The only thing we can change from the setups is the ranges of fees that can be consumed in a transaction.
+The difficult problem with cross-chain swaps is off-chain coordination. In a few words, it's to find an agreement between the two parties on specific conditions. This agreement can depend on the speed of the protocol (i.e. to considerate that a transaction is confirmed) but the speed is influenced by the slowness and several confirmations required for validating a transaction in each blockchain side. The protocol is slow but it can be extended by way of setups. The only thing we can change from the setups is the ranges of fees that can be consumed in a transaction.
 
 ## Scenario
 
-Alice and Bob want to exchange 1 Alice tokens for 10 Bob tokens. The problem is that they are not in the same blockchain, Alice token is defined in Bitcoin blockchain, whereas Bob token is only present Ethereum blockchain.
+Alice and Bob want to exchange 1 Alice's tokens for 10 Bob's tokens. The problem is that they are not in the same blockchain, Alice token is defined in Bitcoin blockchain, whereas Bob's token is only present in Ethereum blockchain.
 
 \input{fig/atomic-swap} 
 
@@ -67,7 +67,7 @@ Generation of a valid pre-image  $\alpha \in \mathbb{Z}_{2^{256}}$ of 32 bytes s
 
 #### Public key hash   
 For a public key $Q$ to a given $h_Q = \mathcal{H}_\textit{160}(Q)$ where $\mathcal{H}_\textit{160}$ is the `SHA256` followed by the `RIPEMD-160` algorithm.
-$h_Q$ is the version of $Q$ that is given to another participant so that they can send it bitcoins. It's shorter than the original public key, and it may provide an extra layer of security for the bitcoins compared to giving the public key directly.
+$h_Q$ is the hash version of $Q$ that is given to another participant so that they can send it bitcoins. It's shorter than the original public key, and it may provide an extra layer of security for the bitcoins compared to giving the public key directly.
 
 #### Hashlock
 Hashlock is for revealing the secret to the other participant. It is a primitive that includes a value to reveal some data (pre-image) that is associated with a given hash where $h_s = \mathcal{H}_\textit{256}(s)$ and handle the spent of the HTLC.
@@ -98,6 +98,9 @@ Bitcoin and Ethereum do use the same elliptic curves. They use the `secp256k1` c
     G&: \text{a base point};\ G = \\ (&\texttt{\scriptsize0x79BE667EF9DCBBAC55A06295CE870B07029BFCDB2DCE28D959F2815B16F81798},\\ &\texttt{\scriptsize0x483ADA7726A3C4655DA4FBFC0E1108A8FD17B448A68554199C47D08FFB10D4B8}) \\
 \end{split}
 \end{equation}
+
+\newpage
+
 
 ## Hashed Timelock Contract
 
@@ -171,6 +174,8 @@ With this contract Alice can spend this output with her public key hash $h_A$ af
 Ethereum doesn't use script language Bitcoin but the programming language for the smart contract. The smart contract allows to create functions from the UML diagram in figure \ref{fig:htlcuml} :
 
 \input{fig/htlc-diagram}
+
+\newpage
 
 #### Function lock()
 A function that will create a contract with all the prerequisites and lock it with the address of the sender `Bob` and the address of the receiver `Alice`.
